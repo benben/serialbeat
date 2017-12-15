@@ -1,0 +1,7 @@
+/.idea
+/build
+
+.DS_Store
+/serialbeat
+/serialbeat.test
+*.pyc

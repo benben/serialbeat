@@ -1,0 +1,5 @@
+= Serialbeat Docs
+
+Welcome to the Serialbeat documentation.
+
+
