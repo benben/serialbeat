@@ -5,3 +5,5 @@
 /serialbeat
 /serialbeat.test
 *.pyc
+
+vendor/
