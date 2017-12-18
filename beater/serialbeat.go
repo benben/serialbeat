@@ -61,12 +61,10 @@ func (bt *Serialbeat) Run(b *beat.Beat) error {
 	serialDataReceived := make(chan bool, 1)
 	go func() {
 		for {
-			logp.Info("******************** main loop started...")
 			var str string
 			// read from serial as long as we didn't receive something already
-			// or it didn't end with \n and isn't a full value yet
+			// or it didn't end with \n
 			for strings.Count(str, "") <= 1 || !(strings.Contains(str, "\n")) {
-				logp.Info("@@@@ waiting for full data")
 				buf := make([]byte, 128)
 				read, _ := serial.Read(buf)
 				str += string(buf[:read])
@@ -85,8 +83,8 @@ func (bt *Serialbeat) Run(b *beat.Beat) error {
 			serialDataReceived <- true
 		}
 	}()
-	for {
 
+	for {
 		select {
 		case <-bt.done:
 			return nil
