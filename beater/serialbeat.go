@@ -31,7 +31,7 @@ func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 	bt := &Serialbeat{
 		done:         make(chan struct{}),
 		config:       config,
-		serialConfig: &serial.Config{Name: "/dev/ttyACM0", Baud: 38400},
+		serialConfig: &serial.Config{Name: config.Device, Baud: config.Baud},
 	}
 	return bt, nil
 }

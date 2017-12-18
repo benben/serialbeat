@@ -3,5 +3,5 @@
 ############################# Serialbeat ######################################
 
 serialbeat:
-  # Defines how often an event is sent to the output
-  period: 1s
+  device: /dev/ttyACM0
+  baud: 38400

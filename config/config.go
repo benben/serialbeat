@@ -3,12 +3,12 @@
 
 package config
 
-import "time"
-
 type Config struct {
-	Period time.Duration `config:"period"`
+	Device string `config:"device"`
+	Baud   int    `config:"baud"`
 }
 
 var DefaultConfig = Config{
-	Period: 1 * time.Second,
+	Device: "/dev/ttyACM0",
+	Baud:   38400,
 }
