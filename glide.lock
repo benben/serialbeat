@@ -1,5 +1,5 @@
 hash: fd02ed4194a3f94b0827d604449917c06063e890ba52d3366799082318c2d812
-updated: 2017-12-16T19:47:25.545004795Z
+updated: 2017-12-17T19:19:33.040398166Z
 imports:
 - name: github.com/davecgh/go-spew
   version: 5215b55f46b2b919f50a1df0eaa5886afe4e3b3d
@@ -218,6 +218,8 @@ imports:
   version: ccaecb155a2177302cb56cae929251a256d0f646
 - name: github.com/spf13/pflag
   version: 4c012f6dcd9546820e378d0bdda4d8fc772cdfea
+- name: github.com/tarm/serial
+  version: fdb95b50820e236308fffabc41ccf23f3056be77
 - name: github.com/urso/go-structform
   version: 844d7d44009e9e8c0f08016fc4dab64e136ca040
   subpackages:

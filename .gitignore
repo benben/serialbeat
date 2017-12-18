@@ -7,3 +7,5 @@
 *.pyc
 
 vendor/
+data/
+*.swp
