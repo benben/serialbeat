@@ -4,8 +4,9 @@
 package config
 
 type Config struct {
-	Device string `config:"device"`
-	Baud   int    `config:"baud"`
+	Device string   `config:"device"`
+	Baud   int      `config:"baud"`
+	Init   []string `config:"init"`
 }
 
 var DefaultConfig = Config{

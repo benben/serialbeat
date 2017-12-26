@@ -5,3 +5,4 @@
 serialbeat:
   device: /dev/ttyACM0
   baud: 38400
+  init: nil

@@ -51,11 +51,14 @@ func (bt *Serialbeat) Run(b *beat.Beat) error {
 		return err
 	}
 
-	serial.Write([]byte("V\n"))
+	if len(bt.config.Init) > 0 {
+		for i := range bt.config.Init {
+			_, err = serial.Write([]byte(bt.config.Init[i] + "\n"))
 
-	_, err = serial.Write([]byte("X21\n"))
-	if err != nil {
-		return err
+			if err != nil {
+				return err
+			}
+		}
 	}
 
 	serialDataReceived := make(chan bool, 1)
