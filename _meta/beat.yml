@@ -5,4 +5,5 @@
 serialbeat:
   device: /dev/ttyACM0
   baud: 38400
+  delimiter: "\n"
   init: nil

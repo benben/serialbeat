@@ -4,12 +4,14 @@
 package config
 
 type Config struct {
-	Device string   `config:"device"`
-	Baud   int      `config:"baud"`
-	Init   []string `config:"init"`
+	Device    string   `config:"device"`
+	Baud      int      `config:"baud"`
+	Delimiter string   `config:"delimiter"`
+	Init      []string `config:"init"`
 }
 
 var DefaultConfig = Config{
-	Device: "/dev/ttyACM0",
-	Baud:   38400,
+	Device:    "/dev/ttyACM0",
+	Baud:      38400,
+	Delimiter: "\n",
 }

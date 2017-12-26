@@ -53,7 +53,7 @@ func (bt *Serialbeat) Run(b *beat.Beat) error {
 
 	if len(bt.config.Init) > 0 {
 		for i := range bt.config.Init {
-			_, err = serial.Write([]byte(bt.config.Init[i] + "\n"))
+			_, err = serial.Write([]byte(bt.config.Init[i] + bt.config.Delimiter))
 
 			if err != nil {
 				return err
