@@ -3,10 +3,18 @@
 ############################# Serialbeat ######################################
 
 serialbeat:
+  # The name of the serial device serialbeat should listen to.
   device: /dev/ttyACM0
+  # The baud rate for the selected serial device
   baud: 38400
+  # The delimiter when serialbeat should emit an event. In this case it is a new
+  # line.
   delimiter: "\n"
-  init: nil
+  # This is an array of strings specifying commands serialbeat should send to
+  # the serial device on start up once.
+  #  init:
+  #  - my
+  #  - commands
 
 #================================ General ======================================
 
