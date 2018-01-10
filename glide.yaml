@@ -7,3 +7,4 @@ import:
   - libbeat/cmd
   - libbeat/common
   - libbeat/logp
+- package: github.com/tarm/serial

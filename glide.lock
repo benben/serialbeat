@@ -1,17 +1,17 @@
-hash: fd02ed4194a3f94b0827d604449917c06063e890ba52d3366799082318c2d812
-updated: 2017-12-17T19:19:33.040398166Z
+hash: 6ed51401425eabb9a7ac13fd94e03e8982022953f3e0bfc27c68884af8fd044b
+updated: 2018-01-10T19:44:16.996995994Z
 imports:
 - name: github.com/davecgh/go-spew
   version: 5215b55f46b2b919f50a1df0eaa5886afe4e3b3d
   subpackages:
   - spew
 - name: github.com/docker/distribution
-  version: f4118485915abb8b163442717326597908eee6aa
+  version: 277ed486c948042cab91ad367c379524f3b25e18
   subpackages:
   - digestset
   - reference
 - name: github.com/docker/docker
-  version: 26bc976ac9e379b4432f71394f069dfb1e4d7baf
+  version: 88b94d7849c2ec3ab61b179c8bfdeb28507cf451
   subpackages:
   - api
   - api/types
@@ -37,7 +37,7 @@ imports:
   - sockets
   - tlsconfig
 - name: github.com/docker/go-units
-  version: 0dadbb0345b35ec7ef35e228dabb8de89a65bf52
+  version: d59758554a3d3911fa25c0269de1ebe2f1912c39
 - name: github.com/eapache/go-resiliency
   version: b86b1ec0dd4209a588dc1285cdd471e73525c0b3
   subpackages:
@@ -164,7 +164,7 @@ imports:
 - name: github.com/ghodss/yaml
   version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
 - name: github.com/gogo/protobuf
-  version: 35b81a066e522fb86ece043a8ef1dbfa10b4fed1
+  version: 160de10b2537169b5ae3e7e221d28269ef40d311
   subpackages:
   - proto
 - name: github.com/golang/protobuf
@@ -190,7 +190,7 @@ imports:
   version: 57fdcb988a5c543893cc61bce354a6e24ab70022
   repo: https://github.com/mattn/go-isatty
 - name: github.com/Microsoft/go-winio
-  version: 78439966b38d69bf38227fbf57ac8a6fee70f69a
+  version: b7c3cf0d1286c7b62b140ed960a00b154c1b6fcc
 - name: github.com/mitchellh/hashstructure
   version: 2bca23e0e452137f789efbc8610126fd8b94f73b
 - name: github.com/opencontainers/go-digest
@@ -201,7 +201,7 @@ imports:
   - specs-go
   - specs-go/v1
 - name: github.com/pierrec/lz4
-  version: 08c27939df1bd95e881e2c2367a749964ad1fceb
+  version: 2fcda4cb7018ce05a25959d2fe08c83e3329f169
 - name: github.com/pierrec/xxHash
   version: a0006b13c722f7f12368c00a3d3c2ae8a999a0c6
   subpackages:
@@ -213,9 +213,9 @@ imports:
 - name: github.com/satori/go.uuid
   version: 879c5887cd475cd7864858769793b2ceb0d44feb
 - name: github.com/Shopify/sarama
-  version: 3b1b38866a79f06deddf0487d5c27ba0697ccd65
+  version: f0c32558d5e8d914b3de1a6f504e2ca88aaa40c4
 - name: github.com/spf13/cobra
-  version: ccaecb155a2177302cb56cae929251a256d0f646
+  version: b95ab734e27d33e0d8fbabf71ca990568d4e2020
 - name: github.com/spf13/pflag
   version: 4c012f6dcd9546820e378d0bdda4d8fc772cdfea
 - name: github.com/tarm/serial
