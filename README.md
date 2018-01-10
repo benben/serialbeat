@@ -29,7 +29,9 @@ Now you should have a `serialbeat` binary in the same directory.
 
 See `serialbeat.reference.yml` for all possible configuration options.
 
-## Contributing
+## Development
+
+This beat was 100% written on a Raspberry Pi 3.
 
 Check out the [beat developer guide](https://www.elastic.co/guide/en/beats/libbeat/current/new-beat.html).
 
