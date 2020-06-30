@@ -1,5 +1,5 @@
-= Serialbeat Docs
+= {Beat} Docs
 
-Welcome to the Serialbeat documentation.
+Welcome to the {Beat} documentation.
 
 

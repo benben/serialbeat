@@ -4,8 +4,8 @@
 .DS_Store
 /serialbeat
 /serialbeat.test
+/serialbeat_*
 *.pyc
-
-vendor/
-data/
-*.swp
+/data
+/logs
+.env

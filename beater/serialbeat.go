@@ -1,46 +1,47 @@
 package beater
 
 import (
+	"bufio"
 	"fmt"
-	"strings"
 	"time"
 
-	"github.com/elastic/beats/libbeat/beat"
-	"github.com/elastic/beats/libbeat/common"
-	"github.com/elastic/beats/libbeat/logp"
+	"github.com/elastic/beats/v7/libbeat/beat"
+	"github.com/elastic/beats/v7/libbeat/common"
+	"github.com/elastic/beats/v7/libbeat/logp"
 
-	"github.com/benben/serialbeat/config"
+	"github.com/suda/serialbeat/config"
 
 	"github.com/tarm/serial"
 )
 
-type Serialbeat struct {
+// serialbeat configuration.
+type serialbeat struct {
 	done         chan struct{}
 	config       config.Config
 	client       beat.Client
 	serialConfig *serial.Config
 }
 
-// Creates beater
+// New creates an instance of serialbeat.
 func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
-	config := config.DefaultConfig
-	if err := cfg.Unpack(&config); err != nil {
+	c := config.DefaultConfig
+	if err := cfg.Unpack(&c); err != nil {
 		return nil, fmt.Errorf("Error reading config file: %v", err)
 	}
 
-	bt := &Serialbeat{
+	bt := &serialbeat{
 		done:         make(chan struct{}),
-		config:       config,
-		serialConfig: &serial.Config{Name: config.Device, Baud: config.Baud},
+		config:       c,
+		serialConfig: &serial.Config{Name: c.Device, Baud: c.Baud},
 	}
 	return bt, nil
 }
 
-func (bt *Serialbeat) Run(b *beat.Beat) error {
+// Run starts serialbeat.
+func (bt *serialbeat) Run(b *beat.Beat) error {
 	logp.Info("serialbeat is running! Hit CTRL-C to stop it.")
 
 	var err error
-
 	bt.client, err = b.Publisher.Connect()
 	if err != nil {
 		return err
@@ -64,26 +65,26 @@ func (bt *Serialbeat) Run(b *beat.Beat) error {
 	serialDataReceived := make(chan bool, 1)
 	go func() {
 		for {
-			var str string
-			// read from serial as long as we didn't receive something already
-			// or it didn't end with \n
-			for strings.Count(str, "") <= 1 || !(strings.Contains(str, "\n")) {
-				buf := make([]byte, 128)
-				read, _ := serial.Read(buf)
-				str += string(buf[:read])
-			}
+			scanner := bufio.NewScanner(serial)
+			for scanner.Scan() {
+				if scanner.Text() != "" {
+					event := beat.Event{
+						Timestamp: time.Now(),
+						Fields: common.MapStr{
+							"type":   b.Info.Name,
+							"data":   scanner.Text(),
+							"device": bt.serialConfig.Name,
+						},
+					}
 
-			event := beat.Event{
-				Timestamp: time.Now(),
-				Fields: common.MapStr{
-					"type": b.Info.Name,
-					"data": str,
-				},
+					bt.client.Publish(event)
+					logp.Info("Event sent")
+					serialDataReceived <- true
+				}
 			}
-
-			bt.client.Publish(event)
-			logp.Info("Event sent")
-			serialDataReceived <- true
+			if scanner.Err() != nil {
+				_ = fmt.Errorf("Error reading serial: %v", err)
+			}
 		}
 	}()
 
@@ -96,7 +97,8 @@ func (bt *Serialbeat) Run(b *beat.Beat) error {
 	}
 }
 
-func (bt *Serialbeat) Stop() {
+// Stop stops serialbeat.
+func (bt *serialbeat) Stop() {
 	bt.client.Close()
 	close(bt.done)
 }

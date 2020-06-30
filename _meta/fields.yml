@@ -2,8 +2,23 @@
   title: serialbeat
   description:
   fields:
-    - name: counter
-      type: long
+    - name: device
+      type: keyword
       required: true
       description: >
-        PLEASE UPDATE DOCUMENTATION
+        The name of the serial device serialbeat should listen to
+    - name: baud
+      type: integer
+      required: true
+      description: >
+        The baud rate for the selected serial device
+    - name: delimiter
+      type: keyword
+      required: false
+      description: >
+        The delimiter when serialbeat should emit an event
+    - name: init
+      type: keyword
+      required: false
+      description: >
+        This is an array of strings specifying commands serialbeat should send to the serial device on start up once
